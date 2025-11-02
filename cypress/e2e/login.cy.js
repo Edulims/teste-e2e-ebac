@@ -16,6 +16,11 @@ context('Funcionalidade Login', () => {
         cy.screenshot()
     });
 
+    /*it('Criando login usando Comando customizado', () => {
+        cy.criar(dadosLogin.usuario, dadosLogin.senha)
+
+    }); */
+
     it('Login com sucesso usando Comando customizado', () => {
         cy.login(dadosLogin.usuario, dadosLogin.senha)
         cy.get('.page-title').should('contain', 'Minha conta')

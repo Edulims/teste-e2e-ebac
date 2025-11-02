@@ -1,3 +1,4 @@
+import checkoutPage from '../support/page_objects/checkout.page'
 /// <reference types="cypress" />
 
 context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
@@ -13,10 +14,48 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
       cy.visit('/')
   });
 
-  it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
-      //TODO: Coloque todo o fluxo de teste aqui, considerando as boas práticas e otimizações
-      
-  });
+
+    it('Seleciondo pedidos', () => {
+    // produto 1
+    cy.adicionarProduto(2, '.button-variable-item-32', '.button-variable-item-Brown')
+
+    // produto 2
+    cy.adicionarProduto(3, '.button-variable-item-XS', '.button-variable-item-Blue')
+
+    // produto 3
+    cy.adicionarProduto(6, '.button-variable-item-XS', ':nth-child(2) > .value > .variable-items-wrapper > .variable-item')
+
+    // produto 4
+    cy.adicionarProduto(1, '.button-variable-item-S', '.button-variable-item-Brown')
+
+    //clicar no carrinho após selecionar a peça
+    cy.get('.woocommerce-message > .button').click()
+    cy.get('.checkout-button').click()
+    
+    //preencher o checkout
+    const dadosCliente = {
+        nome: 'Edu',
+        sobrenome: 'Lima',
+        endereco: 'Rua professor',
+        cidade: 'Curitiba',
+        cep: '81310020',
+        telefone: '41984996555',
+        email: 'edu@teste.com'
+    }
+
+    checkoutPage.preencherCheckout(dadosCliente)
+    checkoutPage.aceitarTermos()
+    checkoutPage.finalizarPedido()
+    checkoutPage.validarPedidoRecebido()
+    
+
+
+  })
+
+    
+
+
+
 
 
 })
