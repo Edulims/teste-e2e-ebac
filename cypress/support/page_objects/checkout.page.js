@@ -23,14 +23,7 @@ class CheckoutPage {
         cy.get('#place_order').click()
     }
 
-    /**
-     * Valida a mensagem de pedido recebido com sucesso.
-     */
-    validarPedidoRecebido() {
-        cy.get('.woocommerce-notice', { timeout: 8000 })
-          .should('contain', 'Seu pedido foi recebido')
-        cy.screenshot() // Você pode manter o screenshot aqui
-    }
+    
 }
 
 // Exporta uma *nova instância* da classe para ser usada nos testes

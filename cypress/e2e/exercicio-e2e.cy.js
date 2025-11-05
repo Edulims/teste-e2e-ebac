@@ -1,5 +1,7 @@
-import checkoutPage from '../support/page_objects/checkout.page'
 /// <reference types="cypress" />
+import checkoutPage from '../support/page_objects/checkout.page.js'
+import validarPedidoPage from '../support/page_objects/validar.pedido.page.js'
+
 
 context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
   /*  Como cliente 
@@ -46,7 +48,8 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     checkoutPage.preencherCheckout(dadosCliente)
     checkoutPage.aceitarTermos()
     checkoutPage.finalizarPedido()
-    checkoutPage.validarPedidoRecebido()
+    
+    validarPedidoPage.validarPedidoRecebido()
     
 
 
