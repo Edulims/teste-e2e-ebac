@@ -1,9 +1,7 @@
 class CheckoutPage {
 
     /**
-     * Preenche os campos de faturamento do checkout.
-     * @param {object} dados - Um objeto com os dados do cliente.
-     * Ex: { nome: 'Edu', sobrenome: 'Lima', ... }
+     Preenche os dados do checkout
      */
     preencherCheckout(dados) {
         cy.get('#billing_first_name').type(dados.nome)
@@ -23,8 +21,6 @@ class CheckoutPage {
         cy.get('#place_order').click()
     }
 
-    
-}
 
 // Exporta uma *nova instância* da classe para ser usada nos testes
 export default new CheckoutPage()
