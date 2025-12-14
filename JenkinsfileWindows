@@ -5,12 +5,13 @@ pipeline {
         stage('Setup') {
             steps {
                 git branch: 'main', url: 'https://github.com/Edulims/teste-e2e-ebac.git'
-                sh 'npm install'
+                bat 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'npm test'
+                bat '''set NO_COLOR=1
+                npm test'''
             }
         }
     }
